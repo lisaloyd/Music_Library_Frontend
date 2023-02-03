@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 
 
-const SearchBar = (props) => {
+const AddSong = (props) => {
     const [title, setTitle] = useState('');
     const [artist, setArtist] = useState('');
     const [album, setAlbum] = useState('');
     const [releaseDate, setReleaseDate] = useState('');
     const [genre, setGenre] = useState('');
 
-    function handleSubmit(event) {
-        event.preventDefault ();
-        let newEntry = {
+    function handleSubmit(song) {
+        song.preventDefault();
+        let newSong = {
            title: title,
            artist: artist,
            album: album,
            releaseDate: releaseDate,
            genre: genre 
         };
-        console.log(newEntry);
+        console.log(newSong);
+        props.AddNewSongProperty(newSong)
     }
 
     return ( 
@@ -32,9 +33,9 @@ const SearchBar = (props) => {
             <input type='date' value={releaseDate} onChange={(event) => setReleaseDate(event.target.value)} />
             <label>Genre</label>
             <input type='string' value={genre} onChange={(event) => setGenre(event.target.value)} />
-            <button type= 'submit'>Search</button>
+            <button type= 'submit'>Add</button>
         </form> 
     );
 }
  
-export default SearchBar;
+export default AddSong;
