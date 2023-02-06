@@ -28,9 +28,18 @@ function App() {
       await getAllSongs();
     }
   }
-  function searchMusic(searchInput) {
-    console.log('searchInput in searchMusic in App:', searchInput)
+  function searchMusic(songs, searchInput) {
+    let filteredSongs = songs.filter((song) =>{
+      if(song === searchInput.song){
+        return true;
+      }
+    })
+    return filteredSongs
+    //use .filter to create new array of only the songs who match the searchInput    
+    //you will need an if statement that will only be true for the songs that match
+    //last step, call setSongs and pass in filteredSongs
   }
+  console.log(searchMusic(songs, setSongs)); 
 
   return (
     <div>
