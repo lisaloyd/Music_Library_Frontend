@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import AddSong from './Components/AddSong/AddSong';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 function App() {
 
@@ -27,11 +28,15 @@ function App() {
       await getAllSongs();
     }
   }
-    
+  function searchMusic(searchInput) {
+    console.log('searchInput in searchMusic in App:', searchInput)
+  }
+
   return (
     <div>
       <MusicTable songs={songs} />
       <AddSong AddNewSongProperty={addNewSong} />
+      <SearchBar searchMusic={searchMusic} />
     </div> 
   );
 }
