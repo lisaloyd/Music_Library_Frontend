@@ -9,10 +9,10 @@ function App() {
 
   useEffect (() => {
     getAllSongs();
-  }, [])
+  }, []);
 
   async function getAllSongs(){
-    let response = await axios.get('http://127.0.0.1:8000/api/music/');
+    const response = await axios.get('http://127.0.0.1:8000/api/music/');
     setSongs(response.data);
   }
 
@@ -21,9 +21,16 @@ function App() {
     setSongs(tempSongs);
   }
 
+  async function createSong(newSong) {
+    let response = await axios.post('http://127.0.0.1:8000/api/music/', newSong);
+    if(response.status===201){
+      await getAllSongs();
+    }
+  }
+    
   return (
     <div>
-      <MusicTable parentSongs={songs} />
+      <MusicTable songs={songs} />
       <AddSong AddNewSongProperty={addNewSong} />
     </div> 
   );

@@ -1,5 +1,11 @@
-const MusicTable = (props) => {
-  return (
+import SongRow from "../SongRow/SongRow.jsx";
+
+const MusicTable = ({songs}) => {
+  const rows = songs.map(song => {
+    return <SongRow song={song} />;
+  });
+
+  return(
     <div>
       <table>
         <thead>
@@ -11,19 +17,7 @@ const MusicTable = (props) => {
             <th>Genre</th>
           </tr>
         </thead>
-        <tbody>
-          {props.parentSongs.map((song) => {
-            return (
-              <tr>
-                <td>{}</td>
-                <td>{}</td>
-                <td>{}</td>
-                <td>{}</td>
-                <td>{}</td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <tbody>{rows}</tbody>
       </table>
     </div>
   );
